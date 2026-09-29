@@ -10,7 +10,7 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
 export async function POST(request: Request) {
     // Nosso formulário deve enviar arquivos da própria origem.
-    if (request.headers.get("origin") !== new URL(request.url).origin) {
+    if (request.headers.get("origin") !== (process.env.APP_ORIGIN ?? new URL(request.url).origin)) {
         return Response.json(
             { error: "Origem da requisição não permitida."},
             { status: 403 }
@@ -95,7 +95,7 @@ export async function POST(request: Request) {
         }
 
         const filename = `${randomUUID()}.webp`;
-        const directory = path.join(process.cwd(), "uploads");
+        const directory = process.env.UPLOAD_DIR ?? path.join(process.cwd(), "uploads");
 
         await mkdir (directory, { recursive: true });
 

@@ -21,13 +21,12 @@ export async function GET(
   }
 
   try {
-    const filePath = path.join(
-      process.cwd(),
-      "uploads",
+    const filePath = path.join(/* turbopackIgnore: true */
+      process.env.UPLOAD_DIR ?? path.join(process.cwd(), "uploads"),
       filename
     );
 
-    const bytes = await readFile(filePath);
+    const bytes = await readFile(/* turbopackIgnore: true */ filePath);
 
     return new Response(new Uint8Array(bytes), {
       headers: {
