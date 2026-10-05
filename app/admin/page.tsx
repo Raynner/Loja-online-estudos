@@ -1,3 +1,5 @@
+import { CoverForm } from "@/src/components/CoverForm";
+import { getCover } from "@/src/lib/cover";
 import { getAdminSession } from "@/src/lib/session";
 import { redirect } from "next/navigation";
 import { logout } from "@/src/actions/auth";
@@ -16,6 +18,7 @@ export default async function AdminPage() {
     }
 
     const products = await listAdminProducts();
+    const cover = await getCover();
 
     const currency = new Intl.NumberFormat("pt-BR", {
         style: "currency",
@@ -40,6 +43,7 @@ export default async function AdminPage() {
             </div>
 
             <div className="admin-container">
+                <CoverForm initialImage={cover} />
                 <ProductForm />
 
                 <section className="admin-products">

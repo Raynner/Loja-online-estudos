@@ -34,3 +34,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Imagem principal
+No painel administrativo, use Capa do site para enviar uma imagem JPG, PNG ou WebP de até 5 MB e clicar em Salvar capa. É possível restaurar a ilustração original. A configuração é salva em cover.json na pasta UPLOAD_DIR (ou uploads local); inclua esse arquivo no backup do volume das imagens. Apenas administradores autenticados podem alterar a capa.

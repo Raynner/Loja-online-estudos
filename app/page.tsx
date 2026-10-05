@@ -1,15 +1,13 @@
+import { getCover } from "@/src/lib/cover";
+export const dynamic = "force-dynamic";
 import { ProductCatalogLoader } from "@/src/components/ProductCatalogLoader";
-
-
-export default function Home() {
-  return (
-    <main className="store-page">
-      <header className="store-header">
-          <h1>Vivi’s Presentes</h1>
-          <p>Presentes especiais para quem você ama.</p>
-      </header>
-
-      <ProductCatalogLoader />
-    </main>
-  );
-}
+const whatsapp = "https://wa.me/5567992133468?text=" + encodeURIComponent("Olá! Gostaria de ajuda para escolher um presente.");
+export default async function Home() { const cover = await getCover(); return <main className="vivi-home">
+<a className="skip-link" href="#presentes">Ir para o catálogo</a>
+<div className="announcement">Pequenos gestos. Grandes sentimentos. <span>Feitos para surpreender ♡</span></div>
+<header className="vivi-nav"><a className="vivi-logo" href="/" aria-label="Vivi’s — início"><img src="/images/vivi-logo.png" alt="Vivi’s Cestas Café e Presentes" /></a><nav aria-label="Navegação principal"><a href="#presentes">Nossos presentes</a><a href="#ocasioes">Ocasiões</a><a href="#como-pedir">Como pedir</a></nav><a className="vivi-outline" href={whatsapp} target="_blank" rel="noreferrer">Fale com a Vivi ↗</a></header>
+<section className="vivi-hero"><div className="hero-copy"><span className="vivi-eyebrow">CESTAS, BUQUÊS & MUITO CARINHO</span><h1>Tem sentimentos<br/>que florescem<br/>em um <em>presente.</em></h1><p>Um café especial, um buquê, uma surpresa.<br/>Encontre um jeito delicado de dizer: você é importante para mim.</p><div className="hero-actions"><a className="vivi-primary" href="#presentes">Encontrar um presente <span>↗</span></a><a className="hero-text-link" href={whatsapp} target="_blank" rel="noreferrer">Preciso de uma sugestão</a></div><div className="hero-signature"><span>♡</span> Carinho que se transforma em lembrança.</div></div><div className="vivi-hero-art"><div className="flower-frame"><img src={cover} alt="Cestas e buquês da Vivi’s"/></div><div className="gift-note"><span>Para alguém especial</span><strong>Com amor,<br/>Vivi’s</strong><span>♡</span></div><span className="art-caption">CADA DETALHE, UM GESTO DE CARINHO.</span></div></section>
+<section className="occasions" id="ocasioes"><div className="section-heading"><span className="vivi-eyebrow">SEMPRE EXISTE UM BOM MOTIVO</span><h2>Para celebrar quem faz bem.</h2></div><div className="occasion-list">{[["♡","Surpreender quem ama"],["✿","Celebrar um aniversário"],["☀","Começar bem o dia"],["✧","Dizer muito obrigado"]].map(([icon,label])=><a href="#presentes" key={label}><span aria-hidden="true">{icon}</span>{label}</a>)}</div></section>
+<section className="vivi-catalog" id="presentes"><div className="section-heading"><span className="vivi-eyebrow">ESCOLHA COM O CORAÇÃO</span><h2>Um presente. Mil sentimentos.</h2><p>Cestas e buquês para fazer parte dos seus momentos especiais.</p></div><ProductCatalogLoader/></section>
+<section className="vivi-contact" id="como-pedir"><div><span className="vivi-eyebrow">VAMOS PREPARAR UMA SURPRESA?</span><h2>Você escolhe o carinho.<br/><em>A gente conversa sobre os detalhes.</em></h2><a className="vivi-primary" href={whatsapp} target="_blank" rel="noreferrer">Conversar pelo WhatsApp ↗</a></div><ol><li><span>01</span><div><h3>Encontre o seu presente</h3><p>Explore o catálogo e escolha o que combina com a ocasião.</p></div></li><li><span>02</span><div><h3>Envie seu pedido</h3><p>O botão do produto abre o WhatsApp com sua escolha na mensagem.</p></div></li><li><span>03</span><div><h3>Combine cada detalhe</h3><p>Confirme disponibilidade, pagamento e entrega diretamente com a loja.</p></div></li></ol></section>
+<footer className="vivi-footer"><div><strong>Vivi’s</strong><p>Cestas, café e presentes.<br/>Para emocionar quem você ama.</p></div><div><span>PODEMOS AJUDAR?</span><a href={whatsapp} target="_blank" rel="noreferrer">(67) 99213-3468 ↗</a></div><a href="/login">Área administrativa</a></footer></main>; }
